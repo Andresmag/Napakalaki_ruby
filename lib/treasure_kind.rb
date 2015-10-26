@@ -9,4 +9,5 @@ module TreasureKind
     ONEHAND = :Onehand
     BOTHHAND = :Bothhand
     SHOES = :Shoes
+    EMPTY = :No_Hay
 end
