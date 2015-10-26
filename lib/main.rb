@@ -21,7 +21,7 @@ monster = Array.new
 #monster[0] = 3 Byakhees de bonanza
 prize = Prize.new(2, 1)
 bad_consequence = BadConsequence.new_level_specific_treasures('Pierdes tu armadura visible y otra oculta', 0,
-  [TreasureKind::ARMOR],[TreasureKind::ARMOR])
+  [TreasureKind::ARMOR], [TreasureKind::ARMOR])
 monster << Monster.new('3 Byahkees de bonanza', 8, bad_consequence, prize)
 
 puts monster[0]

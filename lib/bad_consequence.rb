@@ -33,18 +33,18 @@ class BadConsequence
   def BadConsequence.new_level_number_of_treasures(a_text, some_levels, 
       some_visible_treasures, some_hidden_treasures) 
       
-    new(a_text, some_levels, some_visible_treasures, some_hidden_treasures, false, Array.new, Array.new)
+    new(a_text, some_levels, some_visible_treasures, some_hidden_treasures, Array.new, Array.new, false)
     
   end
   
   def BadConsequence.new_level_specific_treasures(a_text, some_levels, 
       some_specific_visible_treasures, some_specific_hidden_treasures)
     
-    new(a_text, some_levels, 0, 0, false, some_specific_visible_treasures, some_specific_hidden_treasures)
+    new(a_text, some_levels, 0, 0, some_specific_visible_treasures, some_specific_hidden_treasures, false)
   end
   
   def BadConsequence.new_death(a_text)
-    new(a_text, 0, 0, 0, true, Array.new, Array.new)
+    new(a_text, 0, 0, 0, Array.new, Array.new, true)
   end
   
   #Metodo toString para mostrar los atributos de la clase por pantalla
@@ -55,8 +55,12 @@ class BadConsequence
     if death == true
       resp += "\nEstas muerto"
     else
+      @specific_visible_sin_corchetes = @specific_visible_treasures.to_s  #Strings para quitar [:...] posteriormente
+      @specific_hidden_sin_corchetes = @specific_hidden_treasures.to_s
+      
       resp += "\nNiveles que pierdes: #{@levels} \nTesoros perdidos: \n\t -> Visibles = #{@n_visible_treasures} \n\t -> Ocultos = #{@n_hidden_treasures}
-    \nTesoros especificos perdidos: \n\t -> Visibles = " + @specific_visible_treasures.to_s + "\n\t -> Ocultos = " + @specific_hidden_treasures.to_s
+      \nTesoros especificos perdidos: \n\t -> Visibles = " + @specific_visible_sin_corchetes[2, @specific_visible_sin_corchetes.length-3] + 
+      "\n\t -> Ocultos = " + @specific_hidden_sin_corchetes[2, @specific_hidden_sin_corchetes.length-3]
     end
     
     resp #Es lo que devuelve
