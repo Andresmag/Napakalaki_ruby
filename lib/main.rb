@@ -24,9 +24,20 @@ bad_consequence = BadConsequence.new_level_specific_treasures('Pierdes tu armadu
   [TreasureKind::ARMOR],[TreasureKind::ARMOR])
 monster << Monster.new('3 Byahkees de bonanza', 8, bad_consequence, prize)
 
+#monster[1] = Chibithulhu
 prize = Prize.new(1, 1);
-bad_consequence = BadConsequence.new_level_specific_treasures("Embobados con el lindo primigenio 
-te descartas de tu casco visible", 0, [TreasureKind::HELMET] , [TreasureKind::EMPTY] )
+bad_consequence = BadConsequence.new_level_specific_treasures("Embobados con el lindo primigeniote descartas de tu casco visible",
+  0, [TreasureKind::HELMET] , [TreasureKind::EMPTY] )
 monster << Monster.new('Chibithulhu', 2, bad_consequence, prize)
 
-puts monster[1]
+prize = Prize.new(1, 1);
+bad_consequence = BadConsequence.new_level_specific_treasures("El primordial bostezo contagioso. Pierdes el calzado visible",
+  0, [TreasureKind::SHOES] , [TreasureKind::EMPTY] )
+monster << Monster.new('El sopor de Dunwich', 2, bad_consequence, prize)
+
+prize = Prize.new(4,1)
+bad_consequence = BadConsequence.new_level_number_of_treasures("Te atrapan para llevarte de fiesta y te dejan caer en mitad del vuelo. Descarta 1 mano visible y 1 mano oculta",
+  0, 1,1)
+monster << Monster.new('Angeles de la noche ibicenca', 14, bad_consequence, prize)
+
+puts monster[3]
