@@ -16,7 +16,7 @@ class Monster
   
   attr_reader :name
   attr_reader :combat_level
-  attr_reader :prize  #Para poder probar todo lo que hay definido de momento
+  attr_reader :prize  
   
   #Metodo toString para mostrar por pantalla los atributos de la clase
   def to_s

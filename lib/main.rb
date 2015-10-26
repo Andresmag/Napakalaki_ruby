@@ -30,11 +30,13 @@ bad_consequence = BadConsequence.new_level_specific_treasures("Embobados con el 
   0, [TreasureKind::HELMET] , Array.new )
 monster << Monster.new('Chibithulhu', 2, bad_consequence, prize)
 
+#monster[2] = El sopor de Dunwich
 prize = Prize.new(1, 1);
 bad_consequence = BadConsequence.new_level_specific_treasures("El primordial bostezo contagioso. Pierdes el calzado visible",
   0, [TreasureKind::SHOES] , Array.new )
 monster << Monster.new('El sopor de Dunwich', 2, bad_consequence, prize)
 
+#monster[3] = Angeles de la noche ibicenca
 prize = Prize.new(4,1)
 bad_consequence = BadConsequence.new_level_number_of_treasures("Te atrapan para llevarte de fiesta y te dejan caer en mitad del vuelo. Descarta 1 mano visible y 1 mano oculta",
   0, 1,1)
@@ -44,3 +46,12 @@ monster.length.times do |num|
   puts (monster[num])
   puts "\n\n"
 end 
+
+#Consultores de monstruos
+
+#Muestra los monstruos con nivel superior a 10
+def monstruos_mas_10(monster)
+  monster.length.times { |num| if (monster[num].combat_level > 10); puts monster[num]; puts "\n\n" end }
+end
+
+# monstruos_mas_10(monster) para utilizar el consultor
