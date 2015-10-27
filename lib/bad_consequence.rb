@@ -56,7 +56,24 @@ class BadConsequence
       resp += "\nEstas muerto"
     else
  
-      resp += "\nNiveles que pierdes: #{@levels} \nTesoros perdidos: \n\t -> Visibles = #{@n_visible_treasures} \n\t -> Ocultos = #{@n_hidden_treasures}"
+     if @levels != 0
+      resp += "\nNiveles que pierdes: #{@levels}"
+      end
+      
+      if @n_visible_treasures != 0 || @n_hidden_treasures != 0
+        resp += "\nTesoros perdidos: "
+        if @n_visible_treasures == 0
+          resp += ""
+        else
+          resp += "\n\t -> Visibles = #{@n_visible_treasures}"
+        end
+        if @n_hidden_treasures == 0
+          resp += ""
+        else
+          resp += "\n\t -> Ocultos = #{@n_hidden_treasures}"
+        end
+      end
+      
       if !@specific_hidden_treasures.empty? || !@specific_visible_treasures.empty?
         resp +="\nTesoros especificos perdidos:"
         if @specific_visible_treasures.empty?
