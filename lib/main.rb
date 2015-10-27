@@ -60,13 +60,13 @@ monster << Monster.new('Bichgooth',2,bad_consequence, prize)
 
 #monster[7]= El rey de rosa
 prize = Prize.new(4,2)
-bad_consequence = BadConsequence.new_level_number_of_treasures('Sientes bichos bajo la ropa. Descarta la armadura visible',
+bad_consequence = BadConsequence.new_level_number_of_treasures('Pierdes 5 niveles y 3 tesoros visibles',
   5, 3, 0)
 monster << Monster.new('El rey de rosa',13,bad_consequence, prize)
 
 #monster[8]= La que redacta en las tinieblas
 prize = Prize.new(1,1)
-bad_consequence = BadConsequence.new_level_number_of_treasures('Sientes bichos bajo la ropa. Descarta la armadura visible',
+bad_consequence = BadConsequence.new_level_number_of_treasures('Toses tus pulmones y pierdes 2 niveles',
   2, 0, 0)
 monster << Monster.new('La que redacta en las tinieblas',2,bad_consequence, prize)
 
