@@ -84,7 +84,7 @@ monster << Monster.new('Semillas Cthulhu',2,bad_consequence, prize)
 #monster[11]= Dameargo
 prize = Prize.new(2,1)
 bad_consequence = BadConsequence.new_level_specific_treasures('Te intentas escaquear. Pierdes una mano visible',
-  0, [TreasureKind::Onehand] , Array.new )
+  0, [TreasureKind::ONEHAND] , Array.new )
 monster << Monster.new('Dameargo',1,bad_consequence, prize)
 
 #monster[12]= Pollipólipo volante
@@ -106,8 +106,27 @@ monster << Monster.new('Familia feliz',1,bad_consequence, prize)
 #monster[15]= Roboggoth
 prize = Prize.new(2,1)
 bad_consequence = BadConsequence.new_level_specific_treasures('Da mucho asquito. Pierdes 3 niveles',
-  2, [TreasureKind::Bothhand] , Array.new )
+  2, [TreasureKind::BOTHHAND] , Array.new )
 monster << Monster.new('Roboggoth',3,bad_consequence, prize)
+
+#monster[16]= El espia
+prize = Prize.new(1,1)
+bad_consequence = BadConsequence.new_level_specific_treasures('Te asusta por la noche. Pierdes un casco visible',
+  0, [TreasureKind::HELMET] , Array.new )
+monster << Monster.new('El espìa',5,bad_consequence, prize)
+
+#monster[17]= El lenguas
+prize = Prize.new(1,1)
+bad_consequence = BadConsequence.new_level_number_of_treasures('Menudo susto te llevas. Pierdes 2 niveles y 5 tesoros visibles.',
+ 2, 5, 0)
+monster << Monster.new('El lenguas',20,bad_consequence, prize)
+
+#monster[18]= El bicéfalo
+prize = Prize.new(1,1)
+bad_consequence = BadConsequence.new_level_specific_treasures('Te faltna manos para tanta cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos',
+  3, [TreasureKind::ONEHAND,TreasureKind::ONEHAND,TreasureKind::BOTHHANDS] , Array.new )
+monster << Monster.new('El bicéfalo',20,bad_consequence, prize)
+
 
 monster.length.times do |num|
   puts (monster[num])
