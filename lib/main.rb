@@ -141,3 +141,34 @@ def monstruos_mas_10(monster)
 end
 
 # monstruos_mas_10(monster) para utilizar el consultor
+
+#Mostrar todos los monstruos que tengan un mal rollo que implique sólo pérdida de niveles
+def solo_perdida_niveles(monster)
+  monster.length.times { |num| 
+        puts monster[num]; puts "\n\n" if (monster[num].bad_consequence.levels > 0 && monster[num].bad_consequence.n_visible_treasures == 0 && 
+        monster[num].bad_consequence.n_hidden_treasures == 0 && monster[num].bad_consequence.specific_visible_treasures.size == 0 && 
+        monster[num].bad_consequence.specific_hidden_treasures.size == 0 && !monster[num].bad_consequence.death) 
+  }
+end
+
+#solo_perdida_niveles(monster) para utilizar el consultor
+
+#Mostrar todos los monstruos que tengan un buen rollo que indique una ganancia de niveles superior a 1
+def ganar_mas_1_nivel(monster)
+  monster.length.times { |num| if (monster[num].prize.levels > 1); puts monster[num]; puts "\n\n" end }
+end
+
+#ganar_mas_1_nivel(monster) para utilizar el consultor
+
+#Mostrar todos los monstruos que tengan un mal rollo que suponga la pérdida de un determinado tipo de tesoros ya sea  visibles y/o ocultos
+def perder_objeto_especifico(monster, type)
+  monster.length.times do |num| 
+    if (monster[num].bad_consequence.specific_visible_treasures.detect { |tipo| tipo == type } || 
+          monster[num].bad_consequence.specific_hidden_treasures.detect { |tipo| tipo == type  } )
+      puts monster[num]
+      puts "\n\n" 
+    end 
+  end
+end
+
+#perder_objeto_especifico(monster, TreasureKind::ARMOR) para utilizar el consultor
