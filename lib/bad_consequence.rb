@@ -56,36 +56,21 @@ class BadConsequence
       resp += "\nEstas muerto"
     else
  
-     if @levels != 0
-      resp += "\nNiveles que pierdes: #{@levels}"
-      end
+     resp += "\nNiveles que pierdes: #{@levels}" if @levels != 0
       
       if @n_visible_treasures != 0 || @n_hidden_treasures != 0
         resp += "\nTesoros perdidos: "
-        if @n_visible_treasures == 0
-          resp += ""
-        else
-          resp += "\n\t -> Visibles = #{@n_visible_treasures}"
-        end
-        if @n_hidden_treasures == 0
-          resp += ""
-        else
-          resp += "\n\t -> Ocultos = #{@n_hidden_treasures}"
-        end
+        resp += "\n\t -> Visibles = #{@n_visible_treasures}" if @n_visible_treasures != 0
+        resp += "\n\t -> Ocultos = #{@n_hidden_treasures}" if @n_hidden_treasures != 0
       end
       
       if !@specific_hidden_treasures.empty? || !@specific_visible_treasures.empty?
         resp +="\nTesoros especificos perdidos:"
-        if @specific_visible_treasures.empty?
-          resp += ""
-        else
+        unless @specific_visible_treasures.empty?
           @string_specific_visible = @specific_visible_treasures.to_s
-          resp +="\n\t -> Visibles = " + @string_specific_visible[2, @string_specific_visible.length-3]
-               
+          resp += "\n\t -> Visibles = " + @string_specific_visible[2, @string_specific_visible.length-3]
         end
-        if @specific_hidden_treasures.empty?
-          resp += ""
-        else
+        unless @specific_hidden_treasures.empty?
           @string_specific_hidden = @specific_hidden_treasures.to_s
           resp += "\n\t -> Ocultos = " + @string_specific_hidden[2, @string_specific_hidden.length-3]
         end
