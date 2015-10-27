@@ -124,7 +124,7 @@ monster << Monster.new('El lenguas',20,bad_consequence, prize)
 #monster[18]= El bicéfalo
 prize = Prize.new(1,1)
 bad_consequence = BadConsequence.new_level_specific_treasures('Te faltna manos para tanta cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos',
-  3, [TreasureKind::ONEHAND,TreasureKind::ONEHAND,TreasureKind::BOTHHANDS] , Array.new )
+  3, [TreasureKind::ONEHAND,TreasureKind::ONEHAND,TreasureKind::BOTHHAND] , Array.new )
 monster << Monster.new('El bicéfalo',20,bad_consequence, prize)
 
 
@@ -137,24 +137,29 @@ end
 
 #Muestra los monstruos con nivel superior a 10
 def monstruos_mas_10(monster)
+  puts "MONSTRUOS CON NIVEL SUPERIOR A 10: \n\n"
   monster.length.times { |num| if (monster[num].combat_level > 10); puts monster[num]; puts "\n\n" end }
 end
 
-# monstruos_mas_10(monster) para utilizar el consultor
+#monstruos_mas_10(monster) para utilizar el consultor
 
 #Mostrar todos los monstruos que tengan un mal rollo que implique sólo pérdida de niveles
 def solo_perdida_niveles(monster)
-  monster.length.times { |num| 
-        puts monster[num]; puts "\n\n" if (monster[num].bad_consequence.levels > 0 && monster[num].bad_consequence.n_visible_treasures == 0 && 
-        monster[num].bad_consequence.n_hidden_treasures == 0 && monster[num].bad_consequence.specific_visible_treasures.size == 0 && 
-        monster[num].bad_consequence.specific_hidden_treasures.size == 0 && !monster[num].bad_consequence.death) 
-  }
+  puts "MONSTRUOS CUYO MAL ROLLO SOLO IMPLICA PERDIDA DE NIVELES: \n\n"
+  monster.length.times do |num|  
+    if (monster[num].bad_consequence.levels > 0 && monster[num].bad_consequence.n_visible_treasures == 0 && monster[num].bad_consequence.n_hidden_treasures == 0 && monster[num].bad_consequence.specific_visible_treasures.size == 0 && 
+        monster[num].bad_consequence.specific_hidden_treasures.size == 0 && !monster[num].bad_consequence.death)
+        puts monster[num]
+        puts "\n\n" 
+    end
+  end
 end
 
 #solo_perdida_niveles(monster) para utilizar el consultor
 
 #Mostrar todos los monstruos que tengan un buen rollo que indique una ganancia de niveles superior a 1
 def ganar_mas_1_nivel(monster)
+  puts "MONSTRUOS CON LOS QUE GANAS MAS DE UN NIVEL: \n\n"
   monster.length.times { |num| if (monster[num].prize.levels > 1); puts monster[num]; puts "\n\n" end }
 end
 
@@ -162,6 +167,7 @@ end
 
 #Mostrar todos los monstruos que tengan un mal rollo que suponga la pérdida de un determinado tipo de tesoros ya sea  visibles y/o ocultos
 def perder_objeto_especifico(monster, type)
+  puts "MONSTRUOS CON LOS QUE PIERDES EL OBJETO ESPECIFICO: #{type} \n\n"
   monster.length.times do |num| 
     if (monster[num].bad_consequence.specific_visible_treasures.detect { |tipo| tipo == type } || 
           monster[num].bad_consequence.specific_hidden_treasures.detect { |tipo| tipo == type  } )
