@@ -7,6 +7,6 @@ module TreasureKind
     HELMET = :Helmet
     ARMOR = :Armor
     ONEHAND = :Onehand
-    BOTHHAND = :Bothhand
+    BOTHHANDS = :Bothhands
     SHOES = :Shoes
 end
