@@ -12,6 +12,13 @@ class Dice
   
   attr_reader :instance
   
+   def get_instance
+    if @@instance == nil
+      @@instance = new Dice();
+    end
+    @@instance
+  end
+  
   def next_number
     num_aleatorio = rand(6)+1
     num_aleatorio

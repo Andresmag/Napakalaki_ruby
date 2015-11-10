@@ -11,7 +11,7 @@ class CardDealer
   end
   
   attr_reader :instance
-  attr_reader :used_treasures, :unused_treasures , :used_monsters , :unused_monsters
+  attr_accessor :used_treasures, :unused_treasures , :used_monsters , :unused_monsters
   
   def get_instance
     if @@instance == nil
@@ -141,11 +141,11 @@ class CardDealer
   end
   
   def suffle_treasures
-    Collections.shuffle(unused_treasures)
+    unused_treasures.shuffle!
   end
   
   def suffle_monsters
-    Collections.shuffle(unused_monsters)
+    unused_monsters.shuffle!
   end
   
   def next_treasure

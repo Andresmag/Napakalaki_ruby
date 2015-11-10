@@ -14,9 +14,7 @@ require './Prize'
 require './Monster'
 require './bad_consequence.rb'
 require './treasure_kind.rb'
-
-
-
+require './Dice'
 
 #Antiguo consultor de todos los monstruos
 #
