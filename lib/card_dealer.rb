@@ -13,6 +13,13 @@ class CardDealer
   attr_reader :instance
   attr_reader :used_treasures, :unused_treasures , :used_monsters , :unused_monsters
   
+  def get_instance
+    if @@instance == nil
+      @@instance = new CardDealer();
+    end
+    @@instance
+  end
+  
   def init_treasure_card_deck
   end
   
@@ -20,19 +27,44 @@ class CardDealer
   end
   
   def suffle_treasures
+    Collections.shuffle(unused_treasures)
   end
   
   def suffle_monsters
+    Collections.shuffle(unused_monsters)
   end
   
   def next_treasure
+        if(unused_treasures.isEmpty())
+            #Lo volvemos a rellenar
+            used_treasures.length.times do |num|
+                unused_treasures.add(used_treasures.get(num))
+            end
+            
+            #Lo volvemos a barajar
+            shuffle_treasures()
+            
+            #Limpiamos el mazo de descartes
+            used_treusures.clear()
+        end
+        
+        #Cojemos el primero
+        t = unused_treasures.get(0)
+        
+        #Lo añadimos al mazo de descartes para no volver a cogerlo
+        give_treasures_back(t)
+        
+        #Y lo quitamos del mazo de donde se cogen para evitar repetirlo
+        unused_treasures.remove(t)
+        
+        t    
   end
   
   def next_monster
-        if(unusedMonsters.isEmpty())
+        if(unused_monsters.isEmpty())
             #Lo volvemos a rellenar
-            used_monster.length.times do |num|
-                unused_monsters.add(used_monster.get(num))
+            used_monsters.length.times do |num|
+                unused_monsters.add(used_monsters.get(num))
             end
             
             #Lo volvemos a barajar
