@@ -16,19 +16,19 @@ class Monster
   
   attr_reader :name, :combat_level, :bad_consequence
   
-  def get_levels_gained()
+  def get_levels_gained
     @prize.levels
   end
   
-  def get_treasures_gained()
+  def get_treasures_gained
     @prize.treasures
   end
   
   #Metodo toString para mostrar por pantalla los atributos de la clase
   def to_s
     "Nombre: #{@name} \tNivel: #{@combat_level} \n" + 
-      "Niveles que ganas: #{@prize.levels}" + 
-      "\tTesoros que ganas: #{@prize.treasures}" +
+      "Niveles que ganas: #{get_levels_gained}" + 
+      "\tTesoros que ganas: #{get_treasures_gained}" +
       "\nMal rollo: " + @bad_consequence.to_s
   end
 end
