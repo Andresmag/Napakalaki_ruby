@@ -52,7 +52,7 @@ end
 #Mostrar todos los monstruos que tengan un buen rollo que indique una ganancia de niveles superior a 1
 def ganar_mas_1_nivel(monster)
   puts "MONSTRUOS CON LOS QUE GANAS MAS DE UN NIVEL: \n\n"
-  monster.length.times { |num| if (monster[num].prize.levels > 1); puts monster[num]; puts "\n\n" end }
+  monster.length.times { |num| if (monster[num].get_levels_gained > 1); puts monster[num]; puts "\n\n" end }
 end
 
 #ganar_mas_1_nivel(monster) para utilizar el consultor
