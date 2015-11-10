@@ -5,20 +5,20 @@
 include Singleton
 
 class Dice
-  @@instance = nil
+  
   def initialize
-    
+    @@instance = nil
   end
   
   attr_reader :instance
   
-  def next_number()
+  def next_number
     num_aleatorio = rand(6)+1
     num_aleatorio
   end
   
   def to_s
-    resp = "Numero obtenido: #{@@instance}"
+    resp = "Numero obtenido: #{next_number}"
     resp
   end
 end
