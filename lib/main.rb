@@ -141,7 +141,7 @@ def monstruos_mas_10(monster)
   monster.length.times { |num| if (monster[num].combat_level > 10); puts monster[num]; puts "\n\n" end }
 end
 
-monstruos_mas_10(monster) 
+#monstruos_mas_10(monster) para utilizar el consultor
 
 #Mostrar todos los monstruos que tengan un mal rollo que implique sólo pérdida de niveles
 def solo_perdida_niveles(monster)

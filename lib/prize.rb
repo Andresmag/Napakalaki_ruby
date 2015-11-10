@@ -13,7 +13,9 @@ class Prize
   
   #Metodo toString para mostrar por pantalla los atributos de la clase
   def to_s 
-    "Tesoros ganados: #{@treasures} \nNiveles ganados: #{@levels}" 
+    resp = "Tesoros ganados: #{@treasures} \nNiveles ganados: #{@levels}"
+    
+    resp
   end 
   
 end

@@ -5,6 +5,8 @@
 
 class BadConsequence
   
+  MAXTREASURES = 10 #Constante del maximo de tesoros permitidos
+  
   def initialize(a_text, some_levels, some_visible_treasures, 
       some_hidden_treasures, some_specific_visible_treasures,
       some_specific_hidden_treasures, death) 
@@ -46,6 +48,29 @@ class BadConsequence
   def BadConsequence.new_death(a_text)
     new(a_text, 0, 0, 0, Array.new, Array.new, true)
   end
+  
+  def is_empty
+    empty = false
+    if(@n_visible_treasures == 0 && @n_hidden_treasures == 0 &&
+          @specific_visible_treasures.empty? && @specific_hidden_treasures.empty?)
+          empty = true
+          
+     empty
+    end
+  end
+  
+  def substract_visible_treasure(t)
+    @specific_visible_treasures.delete(t.type) {"No quedan mas tesoros de ese tipo"}
+  end
+  
+  def substract_hidden_treasure(t)
+    @specific_hidden_treasures.delete(t.type) {"No quedan mas tesoros de ese tipo"}
+  end
+  
+  #def adjust_to_fit_treasure_list(v, h)
+  #  Por implementar
+  #end
+  
   
   #Metodo toString para mostrar los atributos de la clase por pantalla
   def to_s

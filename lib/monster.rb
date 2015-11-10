@@ -14,14 +14,21 @@ class Monster
     @prize = prize
   end
   
-  attr_reader :name
-  attr_reader :combat_level
-  attr_reader :prize
-  attr_reader :bad_consequence
+  attr_reader :name, :combat_level, :bad_consequence
+  
+  def get_levels_gained()
+    @prize.levels
+  end
+  
+  def get_treasures_gained()
+    @prize.treasures
+  end
   
   #Metodo toString para mostrar por pantalla los atributos de la clase
   def to_s
     "Nombre: #{@name} \tNivel: #{@combat_level} \n" + 
-      @prize.to_s + "\nMal rollo: " + @bad_consequence.to_s
+      "Niveles que ganas: #{@prize.levels}" + 
+      "\tTesoros que ganas: #{@prize.treasures}" +
+      "\nMal rollo: " + @bad_consequence.to_s
   end
 end
