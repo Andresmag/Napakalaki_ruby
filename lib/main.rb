@@ -7,23 +7,10 @@
 # => Andresmag
 # => Algebro
 
-
-#Prueba de la clase prize y monster combinadas
-
-require './Prize'
-require './Monster'
-require './bad_consequence.rb'
-require './treasure_kind.rb'
-require './Dice'
-require './Napakalki'
-require './CardDealer'
-
-#Antiguo consultor de todos los monstruos
-#
-#monster.length.times do |num|
-#  puts (monster[num])
-#  puts "\n\n"
-#end  
+require 'player.rb'
+require 'card_dealer.rb'
+require 'dice.rb'
+require 'napakalaki.rb'
 
 #Consultores de monstruos
 
@@ -70,3 +57,13 @@ def perder_objeto_especifico(monster, type)
 end
 
 #perder_objeto_especifico(monster, TreasureKind::ARMOR) para utilizar el consultor
+
+dice = Dice.instance
+puts dice.to_s
+
+
+dealer = CardDealer.instance
+dealer.init_cards
+puts dealer.next_treasure
+puts dealer.next_monster
+puts dealer.next_monster

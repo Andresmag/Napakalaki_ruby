@@ -1,29 +1,23 @@
+#encoding: utf-8
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-include Singleton
+require 'singleton'
 
 class Napakalaki
-
-    @@instance = nil
-    attr_reader :current_monster, :current_player, :dealer, :players  
+  include Singleton
   
-  def initialize
-    current_monster = nil
-    current_player = nil
-    dealer = nil
-    players = Array.new
+    def initialize
+    @current_monster = nil
+    @current_player = nil
+    @dealer = nil
+    @players = Array.new
   end
   
-  def get_instance
-    if @@instance == null
-      @@instance = new Napakalaki()
-    end
-    @@instance
-  end
+  attr_reader :current_monster, :current_player, :dealer, :players  
   
-  def init_players (names)
+  def init_players(names)
    
   end
   
@@ -60,11 +54,11 @@ class Napakalaki
   end
   
   def get_current_player
-    @@current_player
+    @current_player
   end
   
   def get_current_monster
-      @@current_monster
+      @current_monster
   end
   
   def next_turn

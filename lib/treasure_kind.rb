@@ -3,10 +3,10 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-module TreasureKind
-    HELMET = :Helmet
-    ARMOR = :Armor
-    ONEHAND = :Onehand
-    BOTHHANDS = :Bothhands
-    SHOES = :Shoes
-end
+  module TreasureKind
+      HELMET = :Helmet
+      ARMOR = :Armor
+      ONEHAND = :Onehand
+      BOTHHANDS = :Bothhands
+      SHOES = :Shoes
+  end
