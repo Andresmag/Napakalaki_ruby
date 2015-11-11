@@ -5,9 +5,10 @@
 include Singleton
 
 class Dice
+  @@instance = nil
   
   def initialize
-    @@instance = nil
+    
   end
   
   attr_reader :instance

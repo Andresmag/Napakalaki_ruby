@@ -22,7 +22,7 @@ class CardDealer
     end
     @@instance
   end
-  
+   
   def init_treasure_card_deck
         
         unused_treasures.add(new Treasure("¡Si mi amo!", 4, TreasureKind::HELMET));

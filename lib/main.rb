@@ -15,6 +15,8 @@ require './Monster'
 require './bad_consequence.rb'
 require './treasure_kind.rb'
 require './Dice'
+require './Napakalki'
+require './CardDealer'
 
 #Antiguo consultor de todos los monstruos
 #
