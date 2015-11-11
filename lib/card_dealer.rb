@@ -176,11 +176,11 @@ class CardDealer
     
   end
   
-  def suffle_treasures
+  def shuffle_treasures
     unused_treasures.shuffle!
   end
   
-  def suffle_monsters
+  def shuffle_monsters
     unused_monsters.shuffle!
   end
   
