@@ -3,7 +3,8 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-
+module Napakalaki
+  
   class Player
     MAXLEVEL = 10
     def initialize(a_name)
@@ -19,7 +20,7 @@
 
     attr_reader :name
     attr_accessor :dead, :level, :pending_bad_consequence, :enemy
-    attr_accessor :hidden_treasures, :visible_treasures, :can_I_steal 
+    attr_accessor :hidden_treasures, :visible_treasures, :can_I_steal
 
 
     private
@@ -130,3 +131,5 @@
       @can_I_steal = false
     end
   end
+  
+end

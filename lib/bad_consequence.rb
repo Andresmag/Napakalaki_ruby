@@ -3,6 +3,7 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
+module Napakalaki
   class BadConsequence
 
     MAXTREASURES = 10 #Constante del maximo de tesoros permitidos
@@ -105,3 +106,4 @@
       resp #Es lo que devuelve
     end
   end
+end

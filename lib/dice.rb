@@ -3,6 +3,7 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
+module Napakalaki
 
 require 'singleton'
 
@@ -19,3 +20,5 @@ require 'singleton'
      resp
    end
   end
+  
+end

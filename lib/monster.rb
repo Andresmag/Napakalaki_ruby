@@ -3,7 +3,8 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-
+module Napakalaki
+  
   class Monster
     def initialize(new_name, level, bc, prize)
       @name = new_name
@@ -30,3 +31,5 @@
         "\nMal rollo: " + bad_consequence.to_s
     end
   end
+  
+end

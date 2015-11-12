@@ -3,6 +3,9 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
  
+
+module Napakalaki
+  
   class Prize
     def initialize(num_treasures, num_levels)
       @treasures = num_treasures
@@ -19,3 +22,5 @@
     end 
 
   end
+
+end
