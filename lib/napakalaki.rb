@@ -5,9 +5,9 @@
 
 
 module Napakalaki
-  
 
   require 'singleton'
+  require 'combat_result.rb'
 
   class Napakalaki
     include Singleton
@@ -19,24 +19,59 @@ module Napakalaki
       @players = Array.new
     end
 
-    attr_reader :current_monster, :current_player, :dealer, :players  
-
+    attr_reader :current_monster, :current_player, :dealer
+    attr_accessor :players
+    
+    private
     def init_players(names)
+      if(!names.empty?)
+        names.each do |name|
+          new_player = Player.new(name)
+          @players << new_player
+        end
+      end
 
     end
 
     def next_player
-
+      if(@current_player == nil) then
+        num_aleatorio = rand(@players.length)
+        @current_player = @players[num_aleatorio]
+        
+      else
+        num = 0
+        while (@players[num] != @current_player)
+          num += 1
+        end
+        
+        if(num == @players.length-1)
+          @current_player = @players[0]
+        else
+          @current_player = @players[num+1]
+        end
+      end
+      
+      @current_player
     end
 
     def next_turn_allowed
-
+      se_puede_pasar = @current_player.valid_state
+      se_puede_pasar
     end
 
     def set_enemies
-
+      contador = 0
+      @players.each do |player|
+        while(num = rand(3) == contador)
+          num = rand(3)
+        end
+        
+        player.enemy = @players[num]
+        contador += 1
+      end
     end
-
+    
+    public
     def develop_combat
 
     end
@@ -70,7 +105,9 @@ module Napakalaki
     end
 
     def end_of_game (result)
-
+      fin = false
+      fin = true if(result == CombatResult::WINGAME)
+      fin
     end
 
   end
