@@ -61,59 +61,32 @@ module Napakalaki
       end
     end
 
-    #Para este metodo vamos a crear un vector local al metodo,
-    #en el que cada casilla haga referencia a un tipo concreto de tesoro 
-    #que el jugador tenga equipado. De la siguiente manera
-    #Posiciones:
-    # => 0 = Helmet
-    # => 1 = Armor
-    # => 2 = Shoes
-    # => 3 = BothHands
-    # => 4 = OneHand
-    # => 5 = OneHand
-    #Cada casilla contendra TRUE en caso de que el jugador tenga equipado
-    #un objeto del tipo especifico para el que es cada casilla
+    
     def can_make_treasures_visible(t)
-      puede_equipar = true
+      puede_equipar
       tipo_objeto = t.type
-      equipado = Array.new(5, false)
-      una_mano = 0  #Contador para ver cuantos tesoros OneHand lleva equipados
-      @visible_treasures.each do |treasure|
-        case treasure.type
-        when TreasureKind::HELMET
-          equipado[0] = true
-        when TreasureKind::ARMOR
-          equipado[1] = true
-        when TreasureKind::SHOES
-          equipado[2] = true
-        when TreasureKind::BOTHHANDS
-          equipado[3] = true
-        when TreasureKind::ONEHAND
-          if(una_mano == 0)
-            equipado[4] = true
-            una_mano += 1
-          else
-            equipado[5] = true
-          end
-        end
-      end
-      
-      #Una vez rellenado el vector de booleanos con lo que tiene el jugador 
-      #equipado, comparamos con el tipo de objeto que queremos equipar,
-      #si su casilla esta en false, y se cumplen los requisitos, entonces
-      #el jugador podra equiparse el tesoro
       
       case tipo_objeto
       when TreasureKind::HELMET
-        puede_equipar = false if(equipado[0])
+        puede_equipar = !(@visible_treasures.detect{ |tipo| tipo == tipo_objeto })
       when TreasureKind::ARMOR
-        puede_equipar = false if(equipado[1])
+        puede_equipar = !(@visible_treasures.detect{ |tipo| tipo == tipo_objeto })
       when TreasureKind::SHOES
-        puede_equipar = false if(equipado[2])
+        puede_equipar = !(@visible_treasures.detect{ |tipo| tipo == tipo_objeto })
       when TreasureKind::BOTHHANDS
-        puede_equipar = false if(equipado[3] || equipado[4] || equipado[5])
+        puede_equipar = !(@visible_treasures.detect{ |tipo| tipo == tipo_objeto } || 
+                           @visible_treasures.detect{ |tipo| tipo == TreasureKind::ONEHAND})
       when TreasureKind::ONEHAND
-        puede_equipar = false if(equipado[3] || (equipado[4] && equipado[5]))
+        puede_equipar = !(@visible_treasures.detect{ |tipo| tipo == TreasureKind::BOTHHANDS})
+        if(puede_equipar)
+          una_mano = 0  #Contador para ver cuantos tesoros OneHand lleva equipados
+          while(@visible_treasures.detect{ |tipo| tipo == tipo_objeto})
+            una_mano += 1
+          end
+          
+          puede_equipar = (una_mano < 2)
+        end
+                          
       end
       
       puede_equipar
