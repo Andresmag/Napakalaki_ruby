@@ -80,8 +80,8 @@ module Napakalaki
         puede_equipar = !(@visible_treasures.detect{ |tipo| tipo == TreasureKind::BOTHHANDS})
         if(puede_equipar)
           una_mano = 0  #Contador para ver cuantos tesoros OneHand lleva equipados
-          while(@visible_treasures.detect{ |tipo| tipo == tipo_objeto})
-            una_mano += 1
+          @visible_treasures.each do |treasure|  
+            una_mano += 1 if (treasure.type == TreasureKind::ONEHAND)
           end
           
           puede_equipar = (una_mano < 2)

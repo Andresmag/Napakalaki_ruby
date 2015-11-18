@@ -62,8 +62,8 @@ module Napakalaki
     def set_enemies
       contador = 0
       @players.each do |player|
-        while(num = rand(3) == contador)
-          num = rand(3)
+        while(num = rand(@players.length) == contador)
+          num = rand(@players.length)
         end
         
         player.enemy = @players[num]

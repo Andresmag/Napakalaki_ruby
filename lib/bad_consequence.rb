@@ -61,11 +61,21 @@ module Napakalaki
     end
 
     def substract_visible_treasure(t)
-      @specific_visible_treasures.delete(t.type)
+      if(@n_visible_treasures == 0 && !(@specific_visible_treasures.empty?)) then
+        @specific_visible_treasures.delete(t)
+      end
+      if(@n_visible_treasures > 0 && @specific_visible_treasures.empty?) then
+        @n_visible_treasures -= 1
+      end
     end
 
     def substract_hidden_treasure(t)
-      @specific_hidden_treasures.delete(t.type)
+      if(@n_hidden_treasures == 0 && !(@specific_hidden_treasures.empty?)) then
+        @specific_hidden_treasures.delete(t)
+      end
+      if(@n_hidden_treasures > 0 && @specific_hidden_treasures.empty?) then
+        @n_hidden_treasures -= 1
+      end
     end
 
     #def adjust_to_fit_treasure_list(v, h)
