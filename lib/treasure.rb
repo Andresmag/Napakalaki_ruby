@@ -6,6 +6,8 @@
 
 module Napakalaki
   
+  require_relative 'treasure_kind.rb'
+  
   class Treasure
     def initialize(new_name, num_bonus, type)
       @name = new_name

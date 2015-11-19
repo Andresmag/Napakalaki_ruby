@@ -7,7 +7,10 @@
 module Napakalaki
 
   require 'singleton'
-  require 'combat_result.rb'
+  require_relative 'combat_result.rb'
+  require_relative 'player.rb'
+  require_relative 'card_dealer.rb'
+  require_relative 'monster.rb'
 
   class Napakalaki
     include Singleton
@@ -19,8 +22,7 @@ module Napakalaki
       @players = Array.new
     end
 
-    attr_reader :current_monster, :current_player, :dealer
-    attr_accessor :players
+    attr_reader :current_monster, :current_player
     
     private
     def init_players(names)
@@ -90,14 +92,6 @@ module Napakalaki
 
     def init_game (players)
 
-    end
-
-    def get_current_player
-      @current_player
-    end
-
-    def get_current_monster
-        @current_monster
     end
 
     def next_turn

@@ -9,10 +9,10 @@
 
 module Napakalaki
   
-  require 'player.rb'
-  require 'card_dealer.rb'
-  require 'dice.rb'
-  require 'napakalaki.rb'
+  require_relative 'player.rb'
+  require_relative 'card_dealer.rb'
+  require_relative 'dice.rb'
+  require_relative 'napakalaki.rb'
 
   #Consultores de monstruos
 

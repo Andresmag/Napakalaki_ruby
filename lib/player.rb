@@ -5,6 +5,12 @@
 
 module Napakalaki
   
+  require_relative 'treasure.rb'
+  require_relative 'bad_consequence.rb'
+  require_relative 'dice.rb'
+  require_relative 'card_dealer.rb'
+  require_relative 'combat_result.rb'
+  
   class Player
     MAXLEVEL = 10
     def initialize(a_name)
@@ -18,9 +24,8 @@ module Napakalaki
       @pending_bad_consequence = nil
     end
 
-    attr_reader :name
-    attr_accessor :dead, :level, :pending_bad_consequence, :enemy
-    attr_accessor :hidden_treasures, :visible_treasures, :can_I_steal
+    attr_reader :name, :dead, :hidden_treasures, :visible_treasures, :level, :can_I_steal
+    attr_accessor :pending_bad_consequence, :enemy  
 
 
     private

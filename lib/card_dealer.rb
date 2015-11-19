@@ -6,11 +6,11 @@
 module Napakalaki
   require 'singleton'
 
-  require 'monster.rb'
-  require 'prize.rb'
-  require 'bad_consequence.rb'
-  require 'treasure.rb'
-  require 'treasure_kind.rb'
+  require_relative 'monster.rb'
+  require_relative 'prize.rb'
+  require_relative 'bad_consequence.rb' 
+  require_relative 'treasure.rb'
+  require_relative 'treasure_kind.rb'
 
   class CardDealer
     include Singleton
@@ -21,8 +21,9 @@ module Napakalaki
       @used_monsters = Array.new
       @unused_monsters = Array.new
     end
-
-    attr_accessor :used_treasures, :unused_treasures , :used_monsters , :unused_monsters
+    
+    #attr_reader :unused_monsters -> para poder usar los consultores en main
+    #aunque en estos habria que cambiar el vector monster por CardDealer.unused_monsters
 
     def init_treasure_card_deck
           #Como los Arrays ya estan inicializados, introducimos las cartas

@@ -23,11 +23,7 @@ module Napakalaki
 
     end
 
-    attr_reader :text
-    attr_reader :levels
-    attr_reader :n_visible_treasures, :n_hidden_treasures
-    attr_reader :death
-
+    attr_reader :text, :levels, :n_visible_treasures, :n_hidden_treasures, :death
     attr_reader :specific_visible_treasures, :specific_hidden_treasures
 
     #Metodos que sobrecarga el constructor
