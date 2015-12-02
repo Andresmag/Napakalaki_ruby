@@ -88,8 +88,22 @@ module NapakalakiGame
 
     def substract_hidden_treasure(t)
       if(@n_hidden_treasures == 0 && !(@specific_hidden_treasures.empty?)) then
+         veces_aparece_tipo_t = 0  #por si el mismo objeto aparece mas de una vez
+                                  #ya que delete borra todas sus apariciones en el vector
+        @specific_hidden_treasures.each do |tipo|
+          if(tipo == t.type)
+            veces_aparece_tipo_t += 1
+          end
+        end
+        
         @specific_hidden_treasures.delete(t.type)
+        if(veces_aparece_tipo_t > 1) then
+          (veces_aparece_tipo_t - 1).times do  
+            @specific_hidden_treasures << t.type
+          end
+        end
       end
+      
       if(@n_hidden_treasures > 0 && @specific_hidden_treasures.empty?) then
         @n_hidden_treasures -= 1
       end

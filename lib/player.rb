@@ -247,10 +247,13 @@ module NapakalakiGame
     public
     #Añadida para el buen funcionamiento
     def to_s
-      resp = @name
-      resp += "\n Nivel -> #{@level}"
-      resp += "\n Nivel de combate -> #{get_combat_level}"
-      if(@dead) then
+      resp = name
+      resp += "\n Nivel -> #{level}"
+      resp += "\n Nivel de combate -> #{get_combat_level}" 
+      if(can_I_steal) then
+        resp += "\n Enemigo -> #{enemy.name}"
+      end
+      if(dead) then
         resp += "\n Jugador muerto"
       else
         resp += "\n Jugador vivo"
