@@ -3,15 +3,15 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-module Napakalaki
-  require 'singleton'
-
-  require_relative 'monster.rb'
-  require_relative 'prize.rb'
-  require_relative 'bad_consequence.rb' 
-  require_relative 'treasure.rb'
-  require_relative 'treasure_kind.rb'
-
+require 'singleton'
+require_relative 'monster.rb'
+require_relative 'prize.rb'
+require_relative 'bad_consequence.rb' 
+require_relative 'treasure.rb'
+require_relative 'treasure_kind.rb'
+  
+module NapakalakiGame
+  
   class CardDealer
     include Singleton
 
@@ -26,53 +26,53 @@ module Napakalaki
     #aunque en estos habria que cambiar el vector monster por CardDealer.unused_monsters
 
     def init_treasure_card_deck
-          #Como los Arrays ya estan inicializados, introducimos las cartas
-          #directamente en unused
+      #Como los Arrays ya estan inicializados, introducimos las cartas
+      #directamente en unused
 
-          @unused_treasures << Treasure.new("¡Si mi amo!", 4, [TreasureKind::HELMET])
-          @unused_treasures << Treasure.new("Botas de investigacion", 3, [TreasureKind::SHOES])
-          @unused_treasures << Treasure.new("Capucha de Cthutlu", 3, [TreasureKind::HELMET])
-          @unused_treasures << Treasure.new("A prueba de babas", 2, [TreasureKind::ARMOR])
-          @unused_treasures << Treasure.new("Botas de lluvia acida", 1, [TreasureKind::BOTHHANDS])
-          @unused_treasures << Treasure.new("Casco minero", 2, [TreasureKind::HELMET])
-          @unused_treasures << Treasure.new("Ametralladora Thompson", 4, [TreasureKind::BOTHHANDS])
-          @unused_treasures << Treasure.new("Camiseta de la UGR", 1, [TreasureKind::ARMOR])
-          @unused_treasures << Treasure.new("Clavo de rail ferroviario", 3, [TreasureKind::ONEHAND])
-          @unused_treasures << Treasure.new("Cuchillo de sushi arcano", 2, [TreasureKind::ONEHAND])
-          @unused_treasures << Treasure.new("Fez alopodo", 3, [TreasureKind::HELMET])
-          @unused_treasures << Treasure.new("Hacha prehistorica", 2, [TreasureKind::ONEHAND])
-          @unused_treasures << Treasure.new("El aparato del Pr.Tesla", 4, [TreasureKind::ARMOR])
-          @unused_treasures << Treasure.new("Gaita", 4, [TreasureKind::BOTHHANDS])
-          @unused_treasures << Treasure.new("Insecticida", 2, [TreasureKind::ONEHAND])
-          @unused_treasures << Treasure.new("Escopeta de 3 cañones", 4, [TreasureKind::BOTHHANDS])
-          @unused_treasures << Treasure.new("Garabato mistico", 2, [TreasureKind::ONEHAND])
-          @unused_treasures << Treasure.new("La rebeca metalica", 2, [TreasureKind::ARMOR])
-          @unused_treasures << Treasure.new("Lanzallamas", 4, [TreasureKind::BOTHHANDS])
-          @unused_treasures << Treasure.new("Necrocomicon", 1, [TreasureKind::ONEHAND])
-          @unused_treasures << Treasure.new("Necronomicon", 5, [TreasureKind::BOTHHANDS])
-          @unused_treasures << Treasure.new("Linterna a 2 manos", 3, [TreasureKind::BOTHHANDS])
-          @unused_treasures << Treasure.new("Necrognomicon", 2, [TreasureKind::ONEHAND])
-          @unused_treasures << Treasure.new("Necrotelecom", 2, [TreasureKind::HELMET])
-          @unused_treasures << Treasure.new("Mazo de los antiguos", 3, [TreasureKind::ONEHAND])
-          @unused_treasures << Treasure.new("Necroplayboycon", 3, [TreasureKind::ONEHAND])
-          @unused_treasures << Treasure.new("Porra preternatural", 2, [TreasureKind::ONEHAND])
-          @unused_treasures << Treasure.new("Shogulador", 1, [TreasureKind::BOTHHANDS])
-          @unused_treasures << Treasure.new("Varita de atizamiento", 3, [TreasureKind::ONEHAND])
-          @unused_treasures << Treasure.new("Tentaculo de pega", 2, [TreasureKind::HELMET])
-          @unused_treasures << Treasure.new("Zapato deja-amigos", 1, [TreasureKind::SHOES])
+      @unused_treasures << Treasure.new("¡Si mi amo!", 4, TreasureKind::HELMET)
+      @unused_treasures << Treasure.new("Botas de investigacion", 3, TreasureKind::SHOES)
+      @unused_treasures << Treasure.new("Capucha de Cthutlu", 3, TreasureKind::HELMET)
+      @unused_treasures << Treasure.new("A prueba de babas", 2, TreasureKind::ARMOR)
+      @unused_treasures << Treasure.new("Botas de lluvia acida", 1, TreasureKind::BOTHHANDS)
+      @unused_treasures << Treasure.new("Casco minero", 2, TreasureKind::HELMET)
+      @unused_treasures << Treasure.new("Ametralladora Thompson", 4, TreasureKind::BOTHHANDS)
+      @unused_treasures << Treasure.new("Camiseta de la UGR", 1, TreasureKind::ARMOR)
+      @unused_treasures << Treasure.new("Clavo de rail ferroviario", 3, TreasureKind::ONEHAND)
+      @unused_treasures << Treasure.new("Cuchillo de sushi arcano", 2, TreasureKind::ONEHAND)
+      @unused_treasures << Treasure.new("Fez alopodo", 3, TreasureKind::HELMET)
+      @unused_treasures << Treasure.new("Hacha prehistorica", 2, TreasureKind::ONEHAND)
+      @unused_treasures << Treasure.new("El aparato del Pr.Tesla", 4, TreasureKind::ARMOR)
+      @unused_treasures << Treasure.new("Gaita", 4, TreasureKind::BOTHHANDS)
+      @unused_treasures << Treasure.new("Insecticida", 2, TreasureKind::ONEHAND)
+      @unused_treasures << Treasure.new("Escopeta de 3 cañones", 4, TreasureKind::BOTHHANDS)
+      @unused_treasures << Treasure.new("Garabato mistico", 2, TreasureKind::ONEHAND)
+      @unused_treasures << Treasure.new("La rebeca metalica", 2, TreasureKind::ARMOR)
+      @unused_treasures << Treasure.new("Lanzallamas", 4, TreasureKind::BOTHHANDS)
+      @unused_treasures << Treasure.new("Necrocomicon", 1, TreasureKind::ONEHAND)
+      @unused_treasures << Treasure.new("Necronomicon", 5, TreasureKind::BOTHHANDS)
+      @unused_treasures << Treasure.new("Linterna a 2 manos", 3, TreasureKind::BOTHHANDS)
+      @unused_treasures << Treasure.new("Necrognomicon", 2, TreasureKind::ONEHAND)
+      @unused_treasures << Treasure.new("Necrotelecom", 2, TreasureKind::HELMET)
+      @unused_treasures << Treasure.new("Mazo de los antiguos", 3, TreasureKind::ONEHAND)
+      @unused_treasures << Treasure.new("Necroplayboycon", 3, TreasureKind::ONEHAND)
+      @unused_treasures << Treasure.new("Porra preternatural", 2, TreasureKind::ONEHAND)
+      @unused_treasures << Treasure.new("Shogulador", 1, TreasureKind::BOTHHANDS)
+      @unused_treasures << Treasure.new("Varita de atizamiento", 3, TreasureKind::ONEHAND)
+      @unused_treasures << Treasure.new("Tentaculo de pega", 2, TreasureKind::HELMET)
+      @unused_treasures << Treasure.new("Zapato deja-amigos", 1, TreasureKind::SHOES)
 
-          #Una vez incluidos todos, los barajamos
-          shuffle_treasures
+      #Una vez incluidos todos, los barajamos
+      shuffle_treasures
     end
 
     def init_monster_card_deck
-        #Como los Arrays ya estan inicializados, introducimos las cartas
-        # directamente en unused
+      #Como los Arrays ya estan inicializados, introducimos las cartas
+      # directamente en unused
 
       #monster[0] = 3 Byakhees de bonanza
       prize = Prize.new(2, 1)
       bad_consequence = BadConsequence.new_level_specific_treasures('Pierdes tu armadura visible y otra oculta', 0,
-       [TreasureKind::ARMOR] , [TreasureKind::ARMOR]  )
+      [TreasureKind::ARMOR] , [TreasureKind::ARMOR]  )
       @unused_monsters << Monster.new('3 Byahkees de bonanza', 8, bad_consequence, prize)
 
       #monster[1] = Chibithulhu
@@ -95,7 +95,7 @@ module Napakalaki
 
       #monster[4] = El gorrón en el umbral
       prize = Prize.new(3,1)
-      bad_consequence = BadConsequence.new_level_number_of_treasures('Pierdes todos tus tesoros visibles', 0, BadConsequence::MAXTREASURES, 0)
+      bad_consequence = BadConsequence.new_level_number_of_treasures('Pierdes todos tus tesoros visibles', 0, BadConsequence.MAXTREASURES, 0)
       @unused_monsters << Monster.new('El gorron en el umbral',10,bad_consequence, prize)
 
       #monster[5]= H.P. Munchcraft
@@ -180,7 +180,6 @@ module Napakalaki
 
       #Una vez incluidos todos, los barajamos
       shuffle_monsters
-
     end
 
     def shuffle_treasures
@@ -193,54 +192,57 @@ module Napakalaki
 
     def next_treasure
       if(@unused_treasures.empty?)
-              #Lo volvemos a rellenar
-              @used_treasures.length.times do |num|
-                  @unused_treasures << used_treasures[num]
-              end
-
-              #Lo volvemos a barajar
-              shuffle_treasures
-
-              #Limpiamos el mazo de descartes
-              @used_treusures.clear
+        #Lo volvemos a rellenar si se puede
+        if(!@used_treasures.empty?)
+          @used_treasures.each do |treasure|
+            @unused_treasures << treasure
           end
+          
+          #Lo volvemos a barajar
+          shuffle_treasures
 
-          #Cojemos el primero
-          t = @unused_treasures[0]
+          #Limpiamos el mazo de descartes
+          @used_treasures.clear 
+        else
+          puts "No hay cartas tampoco en el mazo de descartes"
+          t = nil
+        end
+      end
+      
+      if(!@unused_treasures.empty?)
+        #Cojemos el primero
+        t = @unused_treasures[0]
 
-          #Lo añadimos al mazo de descartes para no volver a cogerlo
-          give_treasure_back(t)
-
-          #Y lo quitamos del mazo de donde se cogen para evitar repetirlo
-          @unused_treasures.delete(t)
-
-          t    
+        #Y lo quitamos del mazo de donde se cogen para evitar repetirlo
+        @unused_treasures.delete(t)    
+      end
+      t
     end
 
     def next_monster
       if(@unused_monsters.empty?)
-              #Lo volvemos a rellenar
-              @used_monsters.length.times do |num|
-                  @unused_monsters << used_monsters[num]
-              end
+        #Lo volvemos a rellenar
+        @used_monsters.each do |monster|
+          @unused_monsters << monster
+        end
 
-              #Lo volvemos a barajar
-              shuffle_monsters
+        #Lo volvemos a barajar
+        shuffle_monsters
 
-              #Limpiamos el mazo de descartes
-              @used_monsters.clear
-          end
+        #Limpiamos el mazo de descartes
+        @used_monsters.clear
+      end
 
-          #Cojemos el primero
-          m = @unused_monsters[0]
+      #Cojemos el primero
+      m = @unused_monsters[0]
 
-          #Lo añadimos al mazo de descartes para no volver a cogerlo
-          give_monster_back(m)
+      #Lo añadimos al mazo de descartes para no volver a cogerlo
+      give_monster_back(m)
 
-          #Y lo quitamos del mazo de donde se cogen para evitar repetirlo
-          @unused_monsters.delete(m)
+      #Y lo quitamos del mazo de donde se cogen para evitar repetirlo
+      @unused_monsters.delete(m)
 
-          m    
+      m    
     end
 
     def give_treasure_back(t)
@@ -252,8 +254,8 @@ module Napakalaki
     end
 
     def init_cards
-          init_treasure_card_deck
-          init_monster_card_deck
+      init_treasure_card_deck
+      init_monster_card_deck
     end
 
   end

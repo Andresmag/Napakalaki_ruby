@@ -4,7 +4,7 @@
 # and open the template in the editor.
  
 
-module Napakalaki
+module NapakalakiGame
   
   class Prize
     def initialize(num_treasures, num_levels)

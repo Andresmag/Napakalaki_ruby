@@ -3,9 +3,9 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-module Napakalaki
-
 require 'singleton'
+
+module NapakalakiGame
 
  class Dice
    include Singleton
@@ -15,10 +15,6 @@ require 'singleton'
      num_aleatorio
    end
 
-   def to_s
-     resp = "Numero obtenido: #{next_number}"
-     resp
-   end
   end
   
 end

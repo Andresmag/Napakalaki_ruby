@@ -2,11 +2,11 @@
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
-
-module Napakalaki
   
-  require_relative 'bad_consequence.rb'
-  require_relative 'prize.rb'
+require_relative 'bad_consequence.rb'
+require_relative 'prize.rb'
+  
+module NapakalakiGame
   
   class Monster
     def initialize(new_name, level, bc, prize)

@@ -6,14 +6,14 @@
 #Autors:
 # => Andresmag
 # => Algebro
-
-module Napakalaki
   
-  require_relative 'player.rb'
-  require_relative 'card_dealer.rb'
-  require_relative 'dice.rb'
-  require_relative 'napakalaki.rb'
+require_relative 'player.rb'
+require_relative 'card_dealer.rb'
+require_relative 'dice.rb'
+require_relative 'napakalaki.rb'
 
+module NapakalakiGame
+  
   #Consultores de monstruos
 
   #Muestra los monstruos con nivel superior a 10
@@ -57,17 +57,5 @@ module Napakalaki
       end 
     end
   end
-
-  #perder_objeto_especifico(monster, TreasureKind::ARMOR) para utilizar el consultor
-
-  dice = Dice.instance
-  puts dice.to_s
-
-
-  dealer = CardDealer.instance
-  dealer.init_cards
-  puts dealer.next_treasure
-  puts dealer.next_monster
-  puts dealer.next_monster
   
 end

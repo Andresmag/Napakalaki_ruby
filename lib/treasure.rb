@@ -2,11 +2,10 @@
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
-
-
-module Napakalaki
   
-  require_relative 'treasure_kind.rb'
+require_relative 'treasure_kind.rb'
+
+module NapakalakiGame
   
   class Treasure
     def initialize(new_name, num_bonus, type)
@@ -19,8 +18,7 @@ module Napakalaki
 
     def to_s
       resp = "\nNombre del tesoro: #{@name}"
-      @type_visible = @type.to_s
-      resp += "\nTipo de tesoro: #{@type_visible[2, @type_visible.length-3]}"
+      resp += "\nTipo de tesoro: #{@type}"
       resp += "\nBonificacion otorgda: #{@bonus}"
 
       resp
