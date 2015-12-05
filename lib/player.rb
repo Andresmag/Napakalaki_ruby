@@ -143,10 +143,6 @@ module NapakalakiGame
         @pending_bad_consequence.substract_visible_treasure(t)
       end
       
-      #Lo llevamos al mazo de descartes
-      dealer = CardDealer.instance
-      dealer.give_treasure_back(t)
-      
       die_if_no_treasures
     end
 
@@ -155,10 +151,6 @@ module NapakalakiGame
       if(@pending_bad_consequence != nil && !@pending_bad_consequence.is_empty) then
         @pending_bad_consequence.substract_hidden_treasure(t)
       end
-      
-      #Lo llevamos al mazo de descartes
-      dealer = CardDealer.instance
-      dealer.give_treasure_back(t)
       
       die_if_no_treasures
     end
@@ -213,14 +205,19 @@ module NapakalakiGame
     end
 
     def discard_all_treasures
+      dealer = CardDealer.instance
       while(!@visible_treasures.empty?)
         t = @visible_treasures[0]
         discard_visible_treasure(t)
+        #Lo llevamos al mazo de descartes
+        dealer.give_treasure_back(t)
       end
       
       while(!@hidden_treasures.empty?)
         t = @hidden_treasures[0]
         discard_hidden_treasure(t)
+        #Lo llevamos al mazo de descartes
+        dealer.give_treasure_back(t)
       end
     end
 
