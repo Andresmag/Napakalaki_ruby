@@ -114,14 +114,12 @@ module NapakalakiGame
       tesoros_ocultos = 0
       if(@n_visible_treasures > v.length)
         tesoros_visibles = v.length
-        puts "Tesoros visibles a eliminar #{tesoros_visibles}"
       else
         tesoros_visibles = @n_visible_treasures
       end
       
       if(@n_hidden_treasures > h.length)
         tesoros_ocultos = h.length
-        puts "Tesoros ocultos a eliminar #{tesoros_ocultos}"
       else
         tesoros_ocultos = @n_hidden_treasures
       end
@@ -145,10 +143,6 @@ module NapakalakiGame
         end
       end
       
-      visibles_especificos.each do |t|
-        puts "Objetos visibles a descartar -> #{t}"
-      end
-      
       copia_ocultos = Array.new(h) #Hacemos una copia de los tesoros del jugador
       ocultos_especificos = Array.new #Creamos el array vacio que vamos a rellenar
       if(!@specific_hidden_treasures.empty?)
@@ -167,21 +161,15 @@ module NapakalakiGame
           end
         end
       end
-      
-      ocultos_especificos.each do |t|
-          puts "Objetos ocultos a descartar -> #{t}"
-      end
      
       if(!visibles_especificos.empty? || !ocultos_especificos.empty?)
         bad_consequence = BadConsequence.new_level_specific_treasures(@text, @levels,
         visibles_especificos, ocultos_especificos)
-        puts "Creado nuevo bad consequence de especificos"
       end
       
       if(tesoros_visibles > 0 || tesoros_ocultos > 0)
         bad_consequence = BadConsequence.new_level_number_of_treasures(@text, @levels, 
           tesoros_visibles, tesoros_ocultos)
-        puts "Creado nuevo bad consequence sin especificos"
       end
       
       if(visibles_especificos.empty? && ocultos_especificos.empty? && 
@@ -189,7 +177,6 @@ module NapakalakiGame
           bad_consequence = BadConsequence.new_level_number_of_treasures(
             "No tienes tesoros que descartarte", @levels, tesoros_visibles,
             tesoros_ocultos)
-        puts "Creado nuevo bad consequence vacio"
       end
       
       bad_consequence
