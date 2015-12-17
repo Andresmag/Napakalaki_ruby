@@ -195,8 +195,8 @@ module NapakalakiGame
     def steal_treasure
       treasure = nil
       if(can_I_steal)
-        if(can_you_give_me_a_treasure)
-          treasure = give_me_a_treasure
+        if(@enemy.can_you_give_me_a_treasure)
+          treasure = @enemy.give_me_a_treasure
           @hidden_treasures << treasure
           have_stolen
         end
@@ -221,22 +221,20 @@ module NapakalakiGame
       end
     end
 
-    private
+    protected
     def give_me_a_treasure
-      treasure = nil
-      if(can_you_give_me_a_treasure)
-        treasure = @enemy.hidden_treasures[rand(@enemy.hidden_treasures.length)]
-        @enemy.discard_hidden_treasure(treasure)
-      end
+      treasure =  @hidden_treasures[rand(@hidden_treasures.length)]
+      discard_hidden_treasure(treasure)
       treasure
     end
       
 
     def can_you_give_me_a_treasure
-      can_steal = (@enemy.hidden_treasures.length > 0)
+      can_steal = (@hidden_treasures.length > 0)
       can_steal
     end
 
+    private
     def have_stolen
       @can_I_steal = false
     end
