@@ -26,24 +26,12 @@ module NapakalakiGame
 
     end
 
-    attr_reader :text, :levels, :death
+    attr_reader :text, :levels, :death, :MAXTREASURES
     attr_reader :specific_visible_treasures, :specific_hidden_treasures
     attr_reader :n_visible_treasures, :n_hidden_treasures
 
     #Metodos que sobrecarga el constructor
     private_class_method :new
-
-
-
-
-
-    def BadConsequence.new_death(a_text)
-      new(a_text, Player.MAXLEVEL, @@MAXTREASURES, @@MAXTREASURES, Array.new, Array.new, true)
-    end
-
-    def self.MAXTREASURES
-      @@MAXTREASURES
-    end
     
     def is_empty
       empty = false
@@ -101,8 +89,8 @@ module NapakalakiGame
     end
 
     def adjust_to_fit_treasure_lists(v, h)
-      tesoros_visibles = 0
-      tesoros_ocultos = 0
+
+      
       if(@n_visible_treasures > v.length)
         tesoros_visibles = v.length
       else

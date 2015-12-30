@@ -3,8 +3,7 @@
 # and open the template in the editor.
 
 module NapakalakiGame
-  
-  class SpecificBadConsequence < BadConsequence
+  class DeathBadConsequence < NumericBadConsequence
     def initialize(a_text, some_levels, some_visible_treasures, 
         some_hidden_treasures, some_specific_visible_treasures,
         some_specific_hidden_treasures, death)
@@ -17,13 +16,9 @@ module NapakalakiGame
     
     #Metodos que sobrecarga el constructor
     private_class_method :new
-    
-    def SpecificBadConsequence.new_level_specific_treasures(a_text, some_levels, 
-        some_specific_visible_treasures, some_specific_hidden_treasures)
 
-      new(a_text, some_levels, 0, 0, some_specific_visible_treasures, some_specific_hidden_treasures, false)
-    end 
-    
-    
+    def DeathBadConsequence.new_death(a_text)
+      new(a_text, Player.MAXLEVEL, @@MAXTREASURES, @@MAXTREASURES, Array.new, Array.new, true)
+    end
   end
 end

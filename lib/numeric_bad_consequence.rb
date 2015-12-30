@@ -5,7 +5,7 @@
 module NapakalakiGame
   
   
-  class Numeric_Bad_Consequence < Bad_Consequence
+  class NumericBadConsequence < BadConsequence
     def initialize(a_text, some_levels, some_visible_treasures, 
         some_hidden_treasures, some_specific_visible_treasures,
         some_specific_hidden_treasures, death)
@@ -16,7 +16,10 @@ module NapakalakiGame
       
     end
     
-    def Numeric_Bad_Consequence.new_level_number_of_treasures(a_text, some_levels, 
+    #Metodos que sobrecarga el constructor
+    private_class_method :new
+    
+    def NumericBadConsequence.new_level_number_of_treasures(a_text, some_levels, 
         some_visible_treasures, some_hidden_treasures) 
 
       new(a_text, some_levels, some_visible_treasures, some_hidden_treasures, Array.new, Array.new, false)
