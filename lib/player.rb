@@ -53,7 +53,7 @@ module NapakalakiGame
     end
     
     def get_oponent_level( m)
-        m.get_combat_level
+        m.combat_level
     end
     
     def should_convert

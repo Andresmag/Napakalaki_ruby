@@ -8,7 +8,7 @@ module NapakalakiGame
         some_hidden_treasures, some_specific_visible_treasures,
         some_specific_hidden_treasures, death)
       
-      super.initialize(a_text, some_levels, some_visible_treasures, 
+      super(a_text, some_levels, some_visible_treasures, 
         some_hidden_treasures, some_specific_visible_treasures,
         some_specific_hidden_treasures, death)
       

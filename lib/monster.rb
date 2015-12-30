@@ -18,7 +18,7 @@ module NapakalakiGame
       
     end
 
-    attr_reader :name, :combat_level, :bad_consequence,
+    attr_reader :name, :combat_level, :bad_consequence
 
     def get_levels_gained
       @prize.levels

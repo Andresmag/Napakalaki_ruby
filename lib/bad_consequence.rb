@@ -26,12 +26,13 @@ module NapakalakiGame
 
     end
 
-    attr_reader :text, :levels, :death, :MAXTREASURES
+    attr_reader :text, :levels, :death
     attr_reader :specific_visible_treasures, :specific_hidden_treasures
     attr_reader :n_visible_treasures, :n_hidden_treasures
-
-    #Metodos que sobrecarga el constructor
-    private_class_method :new
+    
+    def BadConsequence.MAXTREASURES
+      @@MAXTREASURES
+    end
     
     def is_empty
       empty = false
@@ -142,18 +143,18 @@ module NapakalakiGame
       end
      
       if(!visibles_especificos.empty? || !ocultos_especificos.empty?)
-        bad_consequence = BadConsequence.new_level_specific_treasures(@text, @levels,
+        bad_consequence = SpecificBadConsequence.new_level_specific_treasures(@text, @levels,
         visibles_especificos, ocultos_especificos)
       end
       
       if(tesoros_visibles > 0 || tesoros_ocultos > 0)
-        bad_consequence = BadConsequence.new_level_number_of_treasures(@text, @levels, 
+        bad_consequence = NumericBadConsequence.new_level_number_of_treasures(@text, @levels, 
           tesoros_visibles, tesoros_ocultos)
       end
       
       if(visibles_especificos.empty? && ocultos_especificos.empty? && 
             tesoros_visibles == 0 && tesoros_ocultos == 0)
-          bad_consequence = BadConsequence.new_level_number_of_treasures(
+          bad_consequence = NumericBadConsequence.new_level_number_of_treasures(
             "No tienes tesoros que descartarte", @levels, tesoros_visibles,
             tesoros_ocultos)
       end

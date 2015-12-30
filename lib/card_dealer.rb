@@ -5,7 +5,11 @@
 
 require 'singleton'
 require_relative 'monster.rb'
+require_relative 'specific_bad_consequence.rb'
+require_relative 'numeric_bad_consequence.rb'
+require_relative 'death_bad_consequence.rb'
 require_relative 'prize.rb'
+require_relative 'cultist.rb'
 require_relative 'bad_consequence.rb' 
 require_relative 'treasure.rb'
 require_relative 'treasure_kind.rb'
@@ -236,7 +240,7 @@ module NapakalakiGame
       @unused_cultists << Cultist.new("Sectario de la oquedad",1)
       
       #una vez insertado todos, se barajan
-      suffle_cultists
+      shuffle_cultists
       
     end
     
@@ -307,7 +311,7 @@ module NapakalakiGame
     end
 
     def next_cultist
-      if(@unused_treasures.empty?)
+      if(@unused_cultist.empty?)
           puts "NO quedan sectarios"
           c = nil
       else
