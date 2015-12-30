@@ -33,18 +33,9 @@ module NapakalakiGame
     #Metodos que sobrecarga el constructor
     private_class_method :new
 
-    def BadConsequence.new_level_number_of_treasures(a_text, some_levels, 
-        some_visible_treasures, some_hidden_treasures) 
 
-      new(a_text, some_levels, some_visible_treasures, some_hidden_treasures, Array.new, Array.new, false)
 
-    end
 
-    def BadConsequence.new_level_specific_treasures(a_text, some_levels, 
-        some_specific_visible_treasures, some_specific_hidden_treasures)
-
-      new(a_text, some_levels, 0, 0, some_specific_visible_treasures, some_specific_hidden_treasures, false)
-    end
 
     def BadConsequence.new_death(a_text)
       new(a_text, Player.MAXLEVEL, @@MAXTREASURES, @@MAXTREASURES, Array.new, Array.new, true)

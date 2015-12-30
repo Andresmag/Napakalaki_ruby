@@ -20,6 +20,7 @@ module NapakalakiGame
       @unused_treasures = Array.new
       @used_monsters = Array.new
       @unused_monsters = Array.new
+      @unused_cultists = Array.new
     end
     
     #attr_reader :unused_monsters -> para poder usar los consultores en main
@@ -176,12 +177,69 @@ module NapakalakiGame
       prize = Prize.new(1,1)
       bad_consequence = BadConsequence.new_level_specific_treasures('Te faltan manos para tanta cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos',
         3, [TreasureKind::ONEHAND,TreasureKind::ONEHAND,TreasureKind::BOTHHANDS] , Array.new )
-      @unused_monsters << Monster.new('Bicefalo',20,bad_consequence, prize)
+      @unused_monsters << Monster.new('Bicefalo',20,bad_consequence, prize)   
+      
+      #OTROS
+      
+      #monster[19] = El mal indecible impronunciable
+      prize = Prize.new(3,1)
+      bad_consequence = BadConsequence.new_level_specific_treasures('Pierdes 1 mano visible',
+        0, [TreasureKind::ONEHAND] , Array.new )
+      @unused_monsters << Monster.new('El mal indecible impronunciable',10,bad_consequence, prize,-2)
 
+      #monster[20]= Testigos oculares
+      prize = Prize.new(2,1)
+      bad_consequence = BadConsequence.new_level_number_of_treasures('Pierdes tus tesoros visibles. Jajaja.',
+       0, BadConsequence.MAXTREASURES, 0)
+      @unused_monsters << Monster.new('Testigos oculares',6,bad_consequence, prize,2)
+
+      #monster[21]= El gran Cthulhu
+      prize = Prize.new(2,5) 
+      bad_consequence = BadConsequence.new_death('Hoy no es tu de suerte. Mueres.') 
+      @unused_monsters << Monster.new('El gran Cthulhu',20,bad_consequence, prize,4)
+
+      #monster[22]= Serpiente político
+      prize = Prize.new(2,1)
+      bad_consequence = BadConsequence.new_level_number_of_treasures('Tu gobierno te recorta 2 niveles.',
+       2, 0, 0)
+      @unused_monsters << Monster.new('Serpiente político',8,bad_consequence, prize,-2)
+      
+      #monster[23]= Felpuggoth
+      prize = Prize.new(1,1)
+      bad_consequence = BadConsequence.new_level_specific_treasures('Pierdes tu casco y tu armadura visible. Pierdes tus manosocultas.',
+       0, [TreasureKind::HELMET, TreasureKind::ARMOR] ,[TreasureKind::ONEHAND,TreasureKind::ONEHAND,TreasureKind::BOTHHANDS])
+      @unused_monsters << Monster.new('Felpuggoth',2,bad_consequence, prize, 5)   
+   
+      #monster[24]= Shoggoth
+      prize = Prize.new(4,2)
+      bad_consequence = BadConsequence.new_level_number_of_treasures('Pierdes 2 niveles.',
+       2, 0, 0)
+      @unused_monsters << Monster.new('Shoggoth',16,bad_consequence, prize,-4)      
+ 
+      #monster[25]= Lolitagooth
+      prize = Prize.new(1,1)
+      bad_consequence = BadConsequence.new_level_number_of_treasures('Pierdes 2 niveles.',
+       2, 0, 0)
+      @unused_monsters << Monster.new('Lolitagooth',2,bad_consequence, prize,3) 
+      
       #Una vez incluidos todos, los barajamos
       shuffle_monsters
     end
 
+    def init_cultist_card_deck
+   
+      @unused_cultists << Cultist.new("Sectario bonito",1)
+      @unused_cultists << Cultist.new("Sectario peculiar",2)
+      @unused_cultists << Cultist.new("Sectario multiojal",1)
+      @unused_cultists << Cultist.new("Sectaria monocula",2)
+      @unused_cultists << Cultist.new("Sectario saltarin",1)
+      @unused_cultists << Cultist.new("Sectario de la oquedad",1)
+      
+      #una vez insertado todos, se barajan
+      suffle_cultists
+      
+    end
+    
     def shuffle_treasures
       @unused_treasures.shuffle!
     end
@@ -190,6 +248,10 @@ module NapakalakiGame
       @unused_monsters.shuffle!
     end
 
+    def shuffle_cultists
+      @unused_cultists.shuffle!
+    end
+    
     def next_treasure
       if(@unused_treasures.empty?)
         #Lo volvemos a rellenar si se puede
@@ -207,15 +269,14 @@ module NapakalakiGame
           puts "No hay cartas tampoco en el mazo de descartes"
           t = nil
         end
-      end
-      
-      if(!@unused_treasures.empty?)
+      else
         #Cojemos el primero
         t = @unused_treasures[0]
 
         #Y lo quitamos del mazo de donde se cogen para evitar repetirlo
         @unused_treasures.delete(t)    
       end
+
       t
     end
 
@@ -245,6 +306,20 @@ module NapakalakiGame
       m    
     end
 
+    def next_cultist
+      if(@unused_treasures.empty?)
+          puts "NO quedan sectarios"
+          c = nil
+      else
+        #Cojemos el primero
+        c = @unused_culist[0]
+
+        #Y lo quitamos del mazo de donde se cogen para evitar repetirlo
+        @unused_cultist.delete(c)    
+      end
+      c
+    end
+    
     def give_treasure_back(t)
       @used_treasures << t
     end
@@ -256,6 +331,7 @@ module NapakalakiGame
     def init_cards
       init_treasure_card_deck
       init_monster_card_deck
+      init_cultist_card_deck
     end
 
   end

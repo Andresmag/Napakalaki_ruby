@@ -28,6 +28,16 @@ module NapakalakiGame
     attr_reader :can_I_steal, :pending_bad_consequence
     attr_accessor :enemy  
 
+    def cp_player (p)
+      @name = p.name
+      @level = p.level
+      @dead = p.dead
+      @can_I_steal = p.can_I_steal
+      @enemy = p.enemy
+      @visible_treasures = p.visible_treasures
+      @hidden_treasures = p.hidden_treasures
+      @pending_bad_consequence = p.pending_bad_consequence
+    end
 
     private
     def bring_to_life
@@ -40,6 +50,14 @@ module NapakalakiGame
         combat_level += treasure.bonus 
       end
       combat_level
+    end
+    
+    def get_oponent_level( m)
+        m.get_combat_level
+    end
+    
+    def should_convert
+        rand(6)+1 == 1
     end
 
     def increment_levels(i)
@@ -110,7 +128,7 @@ module NapakalakiGame
     
     def combat(m)
      my_level = get_combat_level
-     monster_level = m.combat_level
+     monster_level = get_oponent_level(m)
      resultado_combate = nil
      
       if(my_level > monster_level) then
@@ -123,7 +141,12 @@ module NapakalakiGame
         
       else
         apply_bad_consequence(m)
-        resultado_combate = CombatResult::LOSE
+        if(should_convert) then
+          resultado_combate = CombatResult::LOSEANDCONVERT
+        else
+          resultado_combate = CombatResult::LOSE
+        end
+        
         
       end
       
