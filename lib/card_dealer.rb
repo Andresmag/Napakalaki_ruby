@@ -235,9 +235,11 @@ module NapakalakiGame
       @unused_cultists << Cultist.new("Sectario bonito",1)
       @unused_cultists << Cultist.new("Sectario peculiar",2)
       @unused_cultists << Cultist.new("Sectario multiojal",1)
-      @unused_cultists << Cultist.new("Sectaria monocula",2)
+      @unused_cultists << Cultist.new("Sectaria monocular",2)
       @unused_cultists << Cultist.new("Sectario saltarin",1)
       @unused_cultists << Cultist.new("Sectario de la oquedad",1)
+      
+      puts "Cultist : #{@unused_cultists.length}"
       
       #una vez insertado todos, se barajan
       shuffle_cultists
@@ -311,15 +313,15 @@ module NapakalakiGame
     end
 
     def next_cultist
-      if(@unused_cultist.empty?)
+      if(@unused_cultists.empty?)
           puts "NO quedan sectarios"
           c = nil
       else
         #Cojemos el primero
-        c = @unused_culist[0]
+        c = @unused_cultists[0]
 
         #Y lo quitamos del mazo de donde se cogen para evitar repetirlo
-        @unused_cultist.delete(c)    
+        @unused_cultists.delete(c)    
       end
       c
     end
