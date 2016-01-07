@@ -234,7 +234,7 @@ module NapakalakiGame
    
       @unused_cultists << Cultist.new("Sectario bonito",1)
       @unused_cultists << Cultist.new("Sectario peculiar",2)
-      @unused_cultists << Cultist.new("Sectario multiojal",1)
+      @unused_cultists << Cultist.new("Sectario pulposo",1)
       @unused_cultists << Cultist.new("Sectaria monocular",2)
       @unused_cultists << Cultist.new("Sectario saltarin",1)
       @unused_cultists << Cultist.new("Sectario de la oquedad",1)

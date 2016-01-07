@@ -2,12 +2,16 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
+module NapakalakiGame
+
+
 class Cultist_Player < Player
+  @@total_cultist_player = 0;
   
-  def initialize ( p , c )
+  def initialize (p , c)
     @@total_cultist_player += 1
     super.cp_player(p)
-    my_cultist_card = c
+    @my_cultist_card = c
   end
   
   attr_reader :my_cultist_card, :total_cultist_player
@@ -49,4 +53,6 @@ class Cultist_Player < Player
         resp
     end
     
+end
+
 end

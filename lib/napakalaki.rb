@@ -9,6 +9,7 @@ require_relative 'combat_result.rb'
 require_relative 'player.rb'
 require_relative 'card_dealer.rb'
 require_relative 'monster.rb'
+require_relative 'cultist_player.rb'
 
 module NapakalakiGame
 
@@ -85,7 +86,7 @@ module NapakalakiGame
       resultado = @current_player.combat(@current_monster)
       @dealer.give_monster_back(@current_monster)
       if(resultado==CombatResult::LOSEANDCONVERT) then
-        cultist = Cultist_Player(@current_player, @dealer.next_cultist)
+        cultist = Cultist_Player.new(@current_player, @dealer.next_cultist)
         @players[@players.index(@current_player)] = cultist
 
         @players.each do |player|
