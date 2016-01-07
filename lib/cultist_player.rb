@@ -8,10 +8,11 @@ module NapakalakiGame
 class Cultist_Player < Player
   @@total_cultist_player = 0;
   
-  def initialize (p , c)
+  @override
+  def initialize (player,card)
     @@total_cultist_player += 1
-    super.cp_player(p)
-    @my_cultist_card = c
+    super.cp_player(player)
+    @my_cultist_card = card
   end
   
   attr_reader :my_cultist_card, :total_cultist_player
