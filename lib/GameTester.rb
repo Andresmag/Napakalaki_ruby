@@ -24,25 +24,24 @@ class GameTester
     @game.initGame(names) 
     
     begin #Mientras dure la partida
-      currentPlayer=@game.current_player
       begin #Mientras el jugador se decide a conocer al monstruo
         puts "******* ******* ******* ******* ******* ******* *******"
-        puts "\n\n Turno de: " + currentPlayer.to_s() 
+        puts "\n\n Turno de: " + @game.current_player.to_s() 
         command = getCommandBeforeKnowingMonster()
-        command = processCommand(command, currentPlayer)        
+        command = processCommand(command, @game.current_player)        
       end while (command != Command::Exit && command != Command::ShowMonster)
       if (command == Command::ShowMonster) then
         begin #Mientras el jugador se decida a combatir 
           puts "******* ******* ******* ******* ******* ******* *******"
-          puts "\n\n Turno de: " + currentPlayer.to_s()
+          puts "\n\n Turno de: " + @game.current_player.to_s()
           command = getCommandBeforeFighting()
-          command = processCommand(command, currentPlayer)
+          command = processCommand(command, @game.current_player)
         end while (command != Command::Exit && command != Command::Combat)
         if (command == Command::Combat) then
           combatResult = @game.develop_combat()
           case combatResult
             when NapakalakiGame::CombatResult::WINGAME then 
-              puts "\n\n       " + currentPlayer.name
+              puts "\n\n       " + @game.current_player.name
               puts "\n\n HAS GANADO LA PARTIDA"
               #break está implícito            
             when NapakalakiGame::CombatResult::WIN then
@@ -53,13 +52,13 @@ class GameTester
            if (combatResult != NapakalakiGame::CombatResult::WINGAME) then
             begin #Hasta que se avance de turno 
               puts "******* ******* ******* ******* ******* ******* *******"
-              puts "\n\n Turno de: " + currentPlayer.to_s()
-              if currentPlayer.can_I_steal then
+              puts "\n\n Turno de: " + @game.current_player.to_s()
+              if @game.current_player.can_I_steal then
                 command = getCommandAfterFighting()
               else
                 command = getCommandAfterFightingNoSteal()
               end
-              command = processCommand(command, currentPlayer)
+              command = processCommand(command, @game.current_player)
             end while (command != Command::Exit && command != Command::NextTurnAllowed)
           else 
             command = Command::Exit;
