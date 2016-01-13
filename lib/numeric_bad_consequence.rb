@@ -20,13 +20,13 @@ module NapakalakiGame
       empty
     end
     
-    def substract_visible_treasure
+    def substract_visible_treasure(t=nil)
       if(@n_visible_treasures > 0) then
         @n_visible_treasures -= 1
       end
     end
     
-    def substract_hidden_treasure
+    def substract_hidden_treasure(t=nil)
       if(@n_hidden_treasures > 0) then
         @n_hidden_treasures -= 1
       end

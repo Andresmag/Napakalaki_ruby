@@ -13,27 +13,30 @@ module NapakalakiGame
   
   class Player
    @@MAXLEVEL = 10
-    def initialize(a_name, lvl, dead, steal, enemy, visible, hidden, bc)
+    def initialize(a_name)
       @name = a_name
-      @level = lvl
-      @dead = dead
-      @can_I_steal = steal
-      @enemy = enemy
-      @visible_treasures = visible
-      @hidden_treasures = hidden
-      @pending_bad_consequence = bc
+      @level = 1
+      @dead = true
+      @can_I_steal = true
+      @enemy = nil
+      @visible_treasures = Array.new
+      @hidden_treasures = Array.new
+      @pending_bad_consequence = nil
     end
     
     attr_reader :name, :dead, :hidden_treasures, :visible_treasures, :level
     attr_reader :can_I_steal, :pending_bad_consequence
     attr_accessor :enemy  
     
-    private_class_method :new
-    def Player.new_player(a_name)
-      new(a_name, 1, true, true, nil, Array.new, Array.new, nil)
-    end
-    def Player.new_copy_player (p)
-      new(p.name, p.level, p.dead, p.can_I_steal, p.enemy, Array.new(p.visible_treasures), Array.new(p.hidden_treasures), p.pending_bad_consequence)
+    def cp_player (p)
+      @name = p.name
+      @level = p.level
+      @dead = p.dead
+      @can_I_steal = p.can_I_steal
+      @enemy = p.enemy
+      @visible_treasures = p.visible_treasures
+      @hidden_treasures = p.hidden_treasures
+      @pending_bad_consequence = p.pending_bad_consequence
     end
 
     private
@@ -54,8 +57,9 @@ module NapakalakiGame
     end
     
     def should_convert
-        rand(6)+1 == 1
-        return true
+        number = rand(6)+1
+        puts "Numero obtenido al tirar el dado: #{number}"
+        return  number == 1
     end
 
     def increment_levels(i)
@@ -140,6 +144,7 @@ module NapakalakiGame
       else
         apply_bad_consequence(m)
         if(should_convert) then
+          puts 'CONVERSION A SECTARIO'
           resultado_combate = CombatResult::LOSEANDCONVERT
         else
           resultado_combate = CombatResult::LOSE

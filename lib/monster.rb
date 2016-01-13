@@ -28,14 +28,15 @@ module NapakalakiGame
     end
     
     def get_level_change_against_cultist_player
-      @combat_level + level_change_against_cultist_player
+      level = @combat_level + level_change_against_cultist_player
+      level
     end
 
     #Metodo toString para mostrar por pantalla los atributos de la clase
     def to_s
       resp = "\nNombre: #{name} \tNivel: #{combat_level}"
-      if(level_change_against_cultist_player > 0)
-        resp += "\nNivel contra sectarios: " + get_combat_level_against_cultist_player
+      if(level_change_against_cultist_player != 0)
+        resp += "\nNivel contra sectarios: " + get_level_change_against_cultist_player.to_s
       end
       
       resp +=  "\nNiveles que ganas: #{get_levels_gained}" + 

@@ -29,7 +29,7 @@ module NapakalakiGame
     def init_players(names)
       if(!names.empty?)
         names.each do |name|
-          new_player = Player.new_player(name)
+          new_player = Player.new(name)
           @players << new_player
         end
       end

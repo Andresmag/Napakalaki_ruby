@@ -10,20 +10,21 @@ module NapakalakiGame
 
   class CultistPlayer < Player
     @@total_cultist_player = 0;
-    public_class_method :new
     def initialize (player,card)
       @@total_cultist_player += 1
-      Player.new_copy_player(player)
+      super(player.name)
+      cp_player(player)
       @my_cultist_card = card
+      puts @my_cultist_card.to_s
     end
 
     attr_reader :my_cultist_card, :total_cultist_player
 
 
     def get_combat_level
-      suma = super get_combat_level * 1.2
+      suma = super * 1.2
       suma += @my_cultist_card.gained_levels * @@total_cultist_player
-      suma
+      suma.floor
     end
 
     def should_convert
@@ -31,7 +32,7 @@ module NapakalakiGame
     end
 
     def get_oponent_level(m )
-      m.level_change_against_cultist_player
+      m.get_level_change_against_cultist_player
     end
 
     def give_me_a_treasure
