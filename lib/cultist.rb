@@ -4,16 +4,19 @@
 
 module NapakalakiGame
 
-class Cultist
-  def initialize(name, gained_levels)
-    @name = name
-    @gained_levels = gained_levels
+  class Cultist
+    def initialize(name, gained_levels)
+      @name = name
+      @gained_levels = gained_levels
+    end
+
+   attr_reader :name, :gained_levels
+   
+    def to_s
+      resp = "\nNombre de sectario: #{@name}"
+      resp += "\nNiveles que ganas por cada sectario en juego: #{@gained_levels}"
+      resp
+    end
   end
-  
- attr_reader :name, :gained_levels
- 
-end
-
-
 
 end

@@ -4,21 +4,25 @@
 
 module NapakalakiGame
   class DeathBadConsequence < NumericBadConsequence
-    def initialize(a_text, some_levels, some_visible_treasures, 
-        some_hidden_treasures, some_specific_visible_treasures,
-        some_specific_hidden_treasures, death)
+    
+    attr_reader :death
+    
+    def initialize(a_text, level , visible, hidden, death)
+      super(a_text, level, visible, hidden)
+      @death = death
       
-      super(a_text, some_levels, some_visible_treasures, 
-        some_hidden_treasures, some_specific_visible_treasures,
-        some_specific_hidden_treasures, death)
+    end
+    public_class_method :new
+    
+    def to_s
+      resp = @text
+
+      if (@death == true)
+        resp += "\nEstas muerto"
+      end
       
+      resp
     end
     
-    #Metodos que sobrecarga el constructor
-    private_class_method :new
-
-    def DeathBadConsequence.new_death(a_text)
-      new(a_text, Player.MAXLEVEL, @@MAXTREASURES, @@MAXTREASURES, Array.new, Array.new, true)
-    end
   end
 end

@@ -29,7 +29,7 @@ module NapakalakiGame
     def init_players(names)
       if(!names.empty?)
         names.each do |name|
-          new_player = Player.new(name)
+          new_player = Player.new_player(name)
           @players << new_player
         end
       end
@@ -86,9 +86,9 @@ module NapakalakiGame
       resultado = @current_player.combat(@current_monster)
       @dealer.give_monster_back(@current_monster)
       if(resultado==CombatResult::LOSEANDCONVERT) then
-        cultist = Cultist_Player.new(@current_player, @dealer.next_cultist)
-        @players[@players.index(@current_player)] = cultist
-
+        cultistc = @dealer.next_cultist
+        cultist = CultistPlayer.new(@current_player, cultistc)
+        @players[@players.index(@current_player)] = cultist     
         @players.each do |player|
           if (player.enemy == @current_player) then
             player.enemy = cultist

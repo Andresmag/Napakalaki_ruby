@@ -15,10 +15,9 @@ module NapakalakiGame
       @bad_consequence = bc
       @prize = prize
       @level_change_against_cultist_player = ic
-      
     end
 
-    attr_reader :name, :combat_level, :bad_consequence
+    attr_reader :name, :combat_level, :bad_consequence, :level_change_against_cultist_player
 
     def get_levels_gained
       @prize.levels
@@ -28,14 +27,18 @@ module NapakalakiGame
       @prize.treasures
     end
     
-    def  get_level_change_against_cultist_player
-      @combat_level + @level_change_against_cultist_player
+    def get_level_change_against_cultist_player
+      @combat_level + level_change_against_cultist_player
     end
 
     #Metodo toString para mostrar por pantalla los atributos de la clase
     def to_s
-      "\nNombre: #{name} \tNivel: #{combat_level} \n" + 
-        "Niveles que ganas: #{get_levels_gained}" + 
+      resp = "\nNombre: #{name} \tNivel: #{combat_level}"
+      if(level_change_against_cultist_player > 0)
+        resp += "\nNivel contra sectarios: " + get_combat_level_against_cultist_player
+      end
+      
+      resp +=  "\nNiveles que ganas: #{get_levels_gained}" + 
         "\tTesoros que ganas: #{get_treasures_gained}" +
         "\nMal rollo: " + bad_consequence.to_s
     end

@@ -13,30 +13,27 @@ module NapakalakiGame
   
   class Player
    @@MAXLEVEL = 10
-    def initialize(a_name)
+    def initialize(a_name, lvl, dead, steal, enemy, visible, hidden, bc)
       @name = a_name
-      @level = 1
-      @dead = true
-      @can_I_steal = true
-      @enemy = nil
-      @visible_treasures = Array.new
-      @hidden_treasures = Array.new
-      @pending_bad_consequence = nil
+      @level = lvl
+      @dead = dead
+      @can_I_steal = steal
+      @enemy = enemy
+      @visible_treasures = visible
+      @hidden_treasures = hidden
+      @pending_bad_consequence = bc
     end
-
+    
     attr_reader :name, :dead, :hidden_treasures, :visible_treasures, :level
     attr_reader :can_I_steal, :pending_bad_consequence
     attr_accessor :enemy  
-
-    def cp_player (p)
-      @name = p.name
-      @level = p.level
-      @dead = p.dead
-      @can_I_steal = p.can_I_steal
-      @enemy = p.enemy
-      @visible_treasures = p.visible_treasures
-      @hidden_treasures = p.hidden_treasures
-      @pending_bad_consequence = p.pending_bad_consequence
+    
+    private_class_method :new
+    def Player.new_player(a_name)
+      new(a_name, 1, true, true, nil, Array.new, Array.new, nil)
+    end
+    def Player.new_copy_player (p)
+      new(p.name, p.level, p.dead, p.can_I_steal, p.enemy, Array.new(p.visible_treasures), Array.new(p.hidden_treasures), p.pending_bad_consequence)
     end
 
     private
@@ -58,6 +55,7 @@ module NapakalakiGame
     
     def should_convert
         rand(6)+1 == 1
+        return true
     end
 
     def increment_levels(i)
@@ -265,11 +263,11 @@ module NapakalakiGame
     public
     #Añadida para el buen funcionamiento
     def to_s
-      resp = name
-      resp += "\n Nivel -> #{level}"
+      resp = @name
+      resp += "\n Nivel -> #{@level}"
       resp += "\n Nivel de combate -> #{get_combat_level}" 
       if(can_I_steal) then
-        resp += "\n Enemigo -> #{enemy.name}"
+        resp += "\n Enemigo -> #{@enemy.name}"
       end
       if(dead) then
         resp += "\n Jugador muerto"
